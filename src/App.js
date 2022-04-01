@@ -12,6 +12,7 @@ import angerImg from './Assets/Anger.jpg';
 function App() {
   const [isPending, setIsPending] = useState(false);
   const [sad, setSad] = useState(false);
+  const [thanks, setThanks] = useState(false);
   const [home, setHome] = useState(true);
   const [fear, setFear] = useState(false);
   const [disgust, setDisgust] = useState(false);
@@ -60,6 +61,11 @@ function App() {
   const toggle7 = () =>{
     setDisgust(false);
     setSurprise(true);
+  }
+
+  const upload = () =>{
+    setSurprise(false);
+    setThanks(true);
   }
   
   const videoConstraints = {
@@ -267,7 +273,7 @@ className="webcam-btn capture">Capture</button>
       </div>
       <div className="instruction">
         <p className="instrucion-set">
-          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+          <b>Note: </b>Open your eyes and eyebrows really wide by pulling your eyebrows up.</p>
         <p>e.g</p>
         <img src={fearImg} alt="" className="example" />
       </div>
@@ -308,7 +314,7 @@ className="webcam-btn capture">Capture</button>
       </div>
       <div className="instruction">
         <p className="instrucion-set">
-          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+          <b>Note: </b>Two vertical lines between your eyebrows come up when you pull your eyebrows down and harden your lip when you do it, you notice you feel a little irritated that’s called The Facial Feedback Hypothesis.</p>
         <p>e.g</p>
         <img src={angerImg} alt="" className="example" />
       </div>
@@ -348,7 +354,7 @@ className="webcam-btn capture">Capture</button>
       </div>
       <div className="instruction">
         <p className="instrucion-set">
-          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+          <b>Note: </b>The face you make when you smell something bad or do not like something. Show your upper teeth and crinkle your nose to make an “ughh” gesture. </p>
         <p>e.g</p>
         <img src={disgustImg} alt="" className="example" />
       </div>
@@ -388,7 +394,7 @@ className="webcam-btn capture">Capture</button>
       </div>
       <div className="instruction">
         <p className="instrucion-set">
-          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+          <b>Note: </b>You raise up your eyebrows as far as you can then open your mouth as wide as possible.</p>
         <p>e.g</p>
         <img src={surpriseImg} alt="" className="example" />
       </div>
@@ -401,7 +407,7 @@ setSuImage('')
 }}
 className="webcam-btn retake">
 Retake Image</button> 
-<button className="webcam-btn next" >Next</button>
+<button className="webcam-btn next" onClick={upload}>Upload </button>
 </div>:
 <button onClick={(e)=>{
 e.preventDefault();
@@ -410,6 +416,13 @@ capture(setSuImage);
 className="webcam-btn capture">Capture</button>
 }
       </div>  
+      }
+
+      {
+        thanks &&
+        <div className="thanks">
+          <h1 className="appreciation">Thanks for participating in this survey.</h1>
+        </div>
       }
 
       </div>
