@@ -4,6 +4,10 @@ import Webcam from "react-webcam";
 import sadImg from './Assets/Sadm.jpg';
 import happyImg from './Assets/Happy.jpg';
 import contemptImg from './Assets/Contempt.jpg';
+import fearImg from './Assets/Fear.jpg';
+import disgustImg from './Assets/Disgust.jpg';
+import surpriseImg from './Assets/Surprise.jpg';
+import angerImg from './Assets/Anger.jpg';
 
 function App() {
   const [isPending, setIsPending] = useState(false);
@@ -17,7 +21,6 @@ function App() {
   const [contempt, setContempt] = useState(false);
   const [saImage,setSaImage] = useState('');
   const [coImage,setCoImage]=useState('');
-  const [hoImage,setHoImage] = useState('');
   const [haImage,setHaImage] = useState('');
   const [suImage,setSuImage] = useState('');
   const [fImage,setFImage] = useState('');
@@ -34,30 +37,29 @@ function App() {
     setContempt(true);
   }
 
-  const toggle2 = () => {
-    setContempt(false);
-    setFear(true);
-  }
-
   const toggle3 = () => {
     setSad(false);
     setHappy(true);
   }
 
   const toggle4 =() =>{
-
+    setContempt(false);
+    setFear(true);
   }
 
   const toggle5 = () =>{
-
+    setFear(false);
+    setAnger(true);
   }
 
   const toggle6 = () =>{
-
+    setAnger(false);
+    setDisgust(true);
   }
   
   const toggle7 = () =>{
-
+    setDisgust(false);
+    setSurprise(true);
   }
   
   const videoConstraints = {
@@ -237,7 +239,7 @@ setCoImage('')
 }}
 className="webcam-btn retake">
 Retake Image</button> 
-<button className="webcam-btn next">Next</button>
+<button className="webcam-btn next" onClick={toggle4}>Next</button>
 </div>:
 <button onClick={(e)=>{
 e.preventDefault();
@@ -248,6 +250,168 @@ className="webcam-btn capture">Capture</button>
 
       </div>  
       }
+      {fear && 
+      <div className="contempt">
+        <h1 className="contempt-head head">
+          Fear
+        </h1>
+        <div className="image-container">
+        {fImage === '' ?<Webcam
+        audio={false}
+        height={220}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={220}
+        videoConstraints={videoConstraints}
+      /> : <img src={fImage} alt="Contempt" className="webcam-img" />}
+      </div>
+      <div className="instruction">
+        <p className="instrucion-set">
+          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+        <p>e.g</p>
+        <img src={fearImg} alt="" className="example" />
+      </div>
+      {fImage!==''?
+      <div className="btn-taken">
+<button onClick={(e)=>
+{
+e.preventDefault();
+setFImage('')
+}}
+className="webcam-btn retake">
+Retake Image</button> 
+<button className="webcam-btn next" onClick={toggle5}>Next</button>
+</div>:
+<button onClick={(e)=>{
+e.preventDefault();
+capture(setFImage);
+}}
+className="webcam-btn capture">Capture</button>
+}
+
+      </div>  
+      }
+      {anger && 
+      <div className="anger">
+        <h1 className="anger-head head">
+          Anger
+        </h1>
+        <div className="image-container">
+        {anImage === '' ?<Webcam
+        audio={false}
+        height={220}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={220}
+        videoConstraints={videoConstraints}
+      /> : <img src={anImage} alt="Anger" className="webcam-img" />}
+      </div>
+      <div className="instruction">
+        <p className="instrucion-set">
+          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+        <p>e.g</p>
+        <img src={angerImg} alt="" className="example" />
+      </div>
+      {anImage!==''?
+      <div className="btn-taken">
+<button onClick={(e)=>
+{
+e.preventDefault();
+setAnImage('')
+}}
+className="webcam-btn retake">
+Retake Image</button> 
+<button className="webcam-btn next" onClick={toggle6}>Next</button>
+</div>:
+<button onClick={(e)=>{
+e.preventDefault();
+capture(setAnImage);
+}}
+className="webcam-btn capture">Capture</button>
+}
+</div>  
+      }
+{disgust && 
+      <div className="disgust">
+        <h1 className="disgust-head head">
+          Disgust
+        </h1>
+        <div className="image-container">
+        {diImage === '' ?<Webcam
+        audio={false}
+        height={220}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={220}
+        videoConstraints={videoConstraints}
+      /> : <img src={diImage} alt="Disgust" className="webcam-img" />}
+      </div>
+      <div className="instruction">
+        <p className="instrucion-set">
+          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+        <p>e.g</p>
+        <img src={disgustImg} alt="" className="example" />
+      </div>
+      {diImage!==''?
+      <div className="btn-taken">
+<button onClick={(e)=>
+{
+e.preventDefault();
+setDiImage('')
+}}
+className="webcam-btn retake">
+Retake Image</button> 
+<button className="webcam-btn next" onClick={toggle7}>Next</button>
+</div>:
+<button onClick={(e)=>{
+e.preventDefault();
+capture(setDiImage);
+}}
+className="webcam-btn capture">Capture</button>
+}
+      </div>  
+      }
+      {surprise && 
+      <div className="surprise">
+        <h1 className="surprise-head head">
+          Surprise
+        </h1>
+        <div className="image-container">
+        {suImage === '' ?<Webcam
+        audio={false}
+        height={220}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={220}
+        videoConstraints={videoConstraints}
+      /> : <img src={suImage} alt="Disgust" className="webcam-img" />}
+      </div>
+      <div className="instruction">
+        <p className="instrucion-set">
+          <b>Note: </b>Simply a one side mouth raise. An asymmetric smirk.</p>
+        <p>e.g</p>
+        <img src={surpriseImg} alt="" className="example" />
+      </div>
+      {suImage!==''?
+      <div className="btn-taken">
+<button onClick={(e)=>
+{
+e.preventDefault();
+setSuImage('')
+}}
+className="webcam-btn retake">
+Retake Image</button> 
+<button className="webcam-btn next" >Next</button>
+</div>:
+<button onClick={(e)=>{
+e.preventDefault();
+capture(setSuImage);
+}}
+className="webcam-btn capture">Capture</button>
+}
+      </div>  
+      }
+
       </div>
     </div>
   );
