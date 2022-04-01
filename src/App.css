@@ -1,38 +1,142 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,400&family=Source+Sans+Pro:wght@200;300;400;600&display=swap");
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Poppins';
+}
+
+body{
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.everything{
+  margin: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 20px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.welcome-txt{
+  font-size: 45px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.consent{
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.acceptance{
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.acceptance button,
+.webcam-btn{
+  width: 120px;
+  height: 39px;
+  border: none;
+  border-radius: 7px;
+  margin-right: 27px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.accept,
+.next{
+  background-color: #2121ff;
+  color: #fff;
+}
+
+.decline{
+  background-color: #ccc;
+  color: #000;
+}
+
+.head{
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.webcam-btn{
+  background-color: #ccc;
+}
+
+.next{
+  background-color: #2121ff;
+}
+
+.retake{
+  width: 150px;
+}
+
+.webcam-img{
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.image-container{
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.example{
+  width: 220px;
+  border-radius: 7px;
+}
+
+.instruction{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px
+}
+
+@media screen and (max-width: 480px){
+  .welcome-txt{
+    margin-top: 5px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .everything{
+    width: 90%;
+    font-size: 0.8rem;
+  }
+
+  .consent{
+    width: 90%;
+    line-height: 1.8;
+  }
+
+  .acceptance button,
+.webcam-btn{
+  width: 90px;
+  height: 32px;
+  font-size: 14px;
+}
+
+  .retake{
+    width: 110px;
+    margin-right: 10px;
+  }
+
+  .instruction{
+    width: 95%;
+    font-size: 10px;
   }
 }
+  

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Survey using CNN",
+  "name": "Emotional Facial Recognition using the Deep Neural Network",
   "icons": [
     {
       "src": "favicon.ico",
