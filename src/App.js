@@ -30,7 +30,7 @@ function App() {
   }
 
   const toggle1 = () => {
-    setSad(false);
+    setHappy(false);
     setContempt(true);
   }
 
