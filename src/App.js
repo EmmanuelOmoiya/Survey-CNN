@@ -120,7 +120,7 @@ function App() {
 <p>AFE BABALOLA UNIVERSITY, ADO-EKITI, EKITI STATE, NIGERIA
   <br />
 <span className="bold">Title of Research Project</span>: FACIAL EMOTIONAL RECOGNITION USING CONVOLUTIONAL NEURAL
-NETWORKS. <br />
+NETWORKS. (Working title)<br />
 <span className="bold">Name of Principal Investigator</span>: ADEROJU OLUWAFIKEMI ADEBOSOLA <br />
 <span className="bold">Email of Principal Investigator</span>: fikemiaderoju@gmail.com <br /><br />
 <span className="bold">Name of Supervisor</span>: Akinola S. O.<br />
