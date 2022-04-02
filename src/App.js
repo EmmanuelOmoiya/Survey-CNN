@@ -1,13 +1,14 @@
 import './App.css';
 import { useState, useCallback, useRef } from 'react';
 import Webcam from "react-webcam";
-import sadImg from './Assets/Sadm.jpg';
-import happyImg from './Assets/Happy.jpg';
-import contemptImg from './Assets/Contempt.jpg';
-import fearImg from './Assets/Fear.jpg';
-import disgustImg from './Assets/Disgust.jpg';
-import surpriseImg from './Assets/Surprise.jpg';
-import angerImg from './Assets/Anger.jpg';
+import sadImg from './Assets/Sadn.jpg';
+import happyImg from './Assets/Happyn.jpg';
+import contemptImg from './Assets/Contemptn.jpg';
+import fearImg from './Assets/Fearn.jpg';
+import disgustImg from './Assets/Disgustn.jpg';
+import surpriseImg from './Assets/Surprisen.jpg';
+import angerImg from './Assets/Angern.jpg';
+import axios from 'axios';
 
 function App() {
   const [isPending, setIsPending] = useState(false);
@@ -27,6 +28,7 @@ function App() {
   const [fImage,setFImage] = useState('');
   const [diImage,setDiImage] = useState('');
   const [anImage,setAnImage] = useState('');
+
 
   const toggle = () => {
     setSad(true);
@@ -63,7 +65,7 @@ function App() {
     setSurprise(true);
   }
 
-  const upload = () =>{
+  const upload = (files) =>{
     setSurprise(false);
     setThanks(true);
   }
