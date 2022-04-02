@@ -65,9 +65,33 @@ function App() {
     setSurprise(true);
   }
 
-  const upload = (files) =>{
-    setSurprise(false);
-    setThanks(true);
+  const imageProUp = async (imageLocation, preset_name) => {
+    const data = new FormData()
+    data.append('file', imageLocation)
+    data.append('upload_preset', preset_name)
+    await axios.post('https://api.cloudinary.com/v1_1/dukwkk7ti/image/upload', data)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
+  }
+
+  const upload = async () =>{
+    setIsPending(true);
+    imageProUp(saImage,'sad-preset');
+    imageProUp(haImage,'happy-preset');
+    imageProUp(suImage,'suprise-preset');
+    imageProUp(anImage,'anger-preset');
+    imageProUp(diImage,'disgust-preset');
+    imageProUp(coImage,'contempt-preset');
+    imageProUp(fImage,'fear-preset')
+    .then(
+      setIsPending(false),
+      setSurprise(false),
+      setThanks(true)
+    )
   }
   
   const videoConstraints = {
@@ -409,7 +433,7 @@ setSuImage('')
 }}
 className="webcam-btn retake">
 Retake Image</button> 
-<button className="webcam-btn next" onClick={upload}>Upload </button>
+<button className="webcam-btn next" onClick={upload}>{isPending ? <p>Uploading</p> : <p>Upload</p>}</button>
 </div>:
 <button onClick={(e)=>{
 e.preventDefault();
