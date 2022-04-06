@@ -1,13 +1,13 @@
 import './App.css';
 import { useState, useCallback, useRef } from 'react';
 import Webcam from "react-webcam";
-import sadImg from './Assets/Sadn.jpg';
-import happyImg from './Assets/Happyn.jpg';
-import contemptImg from './Assets/Contemptn.jpg';
-import fearImg from './Assets/Fearn.jpg';
-import disgustImg from './Assets/Disgustn.jpg';
-import surpriseImg from './Assets/Surprisen.jpg';
-import angerImg from './Assets/Angern.jpg';
+import sadImg from './Assets/Sad.jpg';
+import happyImg from './Assets/Happy.jpg';
+import contemptImg from './Assets/Contempt.jpg';
+import fearImg from './Assets/Fear.jpg';
+import disgustImg from './Assets/Disgust.jpg';
+import surpriseImg from './Assets/Surprise.jpg';
+import angerImg from './Assets/Anger.jpg';
 import axios from 'axios';
 
 function App() {
