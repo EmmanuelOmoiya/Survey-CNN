@@ -12,6 +12,7 @@ import axios from 'axios';
 
 function App() {
   const [isPending, setIsPending] = useState(false);
+  const [info, setInfo] = useState(false);
   const [sad, setSad] = useState(false);
   const [thanks, setThanks] = useState(false);
   const [home, setHome] = useState(true);
@@ -21,6 +22,16 @@ function App() {
   const [surprise, setSurprise] = useState(false);
   const [happy, setHappy] = useState(false);
   const [contempt, setContempt] = useState(false);
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [sadLink, setSadLink] = useState('');
+  const [happyLink, setHappyLink] = useState('');
+  const [contemptLink, setContemptLink] = useState('');
+  const [fearLink, setFearLink] = useState('');
+  const [angerLink, setAngerLink] = useState('');
+  const [diLink, setDiLink] = useState('');
+  const [suLink, setSuLink] = useState('');
+
   const [saImage,setSaImage] = useState('');
   const [coImage,setCoImage]=useState('');
   const [haImage,setHaImage] = useState('');
@@ -29,15 +40,19 @@ function App() {
   const [diImage,setDiImage] = useState('');
   const [anImage,setAnImage] = useState('');
 
-
   const toggle = () => {
     setSad(true);
-    setHome(false);
+    setInfo(false);
   }
 
   const toggle1 = () => {
     setHappy(false);
     setContempt(true);
+  }
+
+  const toggle2 = () => {
+    setHome(false);
+    setInfo(true);
   }
 
   const toggle3 = () => {
@@ -65,33 +80,46 @@ function App() {
     setSurprise(true);
   }
 
-  const imageProUp = async (imageLocation, preset_name) => {
+  const pple = {sadLink, fearLink, angerLink, diLink, suLink, happyLink, contemptLink, email, phoneNumber}
+
+  const imageProUp = async (imageLocation, preset_name, context) => {
     const data = new FormData()
     data.append('file', imageLocation)
     data.append('upload_preset', preset_name)
     await axios.post('https://api.cloudinary.com/v1_1/dukwkk7ti/image/upload', data)
     .then(res => {
       console.log(res);
+      context(res.data.url)
     })
+
     .catch(error=>{
       console.log(error);
     })
   }
 
+  const go = () => {
+    imageProUp(saImage,'sad-preset', setSadLink);
+    imageProUp(haImage,'happy-preset', setHappyLink);
+    imageProUp(suImage,'suprise-preset', setSuLink);
+    imageProUp(anImage,'anger-preset', setAngerLink);
+    imageProUp(diImage,'disgust-preset', setDiLink);
+    imageProUp(coImage,'contempt-preset', setContemptLink);
+    imageProUp(fImage,'fear-preset', setFearLink);
+  }
+
   const upload = async () =>{
     setIsPending(true);
-    imageProUp(saImage,'sad-preset');
-    imageProUp(haImage,'happy-preset');
-    imageProUp(suImage,'suprise-preset');
-    imageProUp(anImage,'anger-preset');
-    imageProUp(diImage,'disgust-preset');
-    imageProUp(coImage,'contempt-preset');
-    imageProUp(fImage,'fear-preset')
-    .then(
-      setIsPending(false),
-      setSurprise(false),
-      setThanks(true)
-    )
+    go();
+    await axios.post ('https://non-p.herokuapp.com/', pple)
+      .then((res)=>{
+        setIsPending(false)
+        setSurprise(false)
+        setThanks(true)
+        console.log(res.data)
+      })
+      .catch((error)=>{
+        alert(error)
+      });
   }
   
   const videoConstraints = {
@@ -155,10 +183,24 @@ STUDY AFTER READING ALL THE INFORMATION ABOVE, AND YOU UNDERSTAND THE INFORMATIO
 THIS FORM.</p><br /></p>
         </div>
         <div className="acceptance">
-          <button className="accept" title="Accept" onClick={toggle}>Accept</button>
+          <button className="accept" title="Accept" onClick={toggle2}>Accept</button>
           <button className="decline" onclick={window.open('', '_self', '')} title="Decline">Decline</button>
         </div>
       </div>}
+      {
+        info &&
+        <div className="info">
+          <p className="email lbl">
+            Email:
+          </p>
+          <input type="text" placeholder='Email' className="email" onChange={(e)=> setEmail(e.target.value)}/>
+          <p className="phone lbl">
+            Phone Number:
+          </p>
+          <input type="number" className="phone" placeholder='Phone Number' onChange={(e)=> setPhoneNumber(e.target.value)}/>
+          <button className="webcam-btn next" onClick={toggle}>Next</button>
+        </div>
+      }
       {sad && 
       <div className="sad">
         <h1 className="sad-head head">

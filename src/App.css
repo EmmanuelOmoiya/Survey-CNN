@@ -70,6 +70,7 @@ body{
 .head{
   font-size: 52px;
   margin-bottom: 10px;
+  margin-top: -10px;
 }
 
 .webcam-btn{
@@ -105,6 +106,22 @@ body{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 8px
+}
+
+input{
+  width: 99%;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+}
+
+.lbl{
+  text-align: left;
+  margin-bottom: 7px;
+  font-size: 19px;
 }
 
 @media screen and (max-width: 480px){
