@@ -12,6 +12,7 @@ import axios from 'axios';
 
 function App() {
   const [isPending, setIsPending] = useState(false);
+  const [disable, setDisable] = useState(false);
   const [info, setInfo] = useState(false);
   const [sad, setSad] = useState(false);
   const [thanks, setThanks] = useState(false);
@@ -82,35 +83,39 @@ function App() {
 
   const pple = {sadLink, fearLink, angerLink, diLink, suLink, happyLink, contemptLink, email, phoneNumber}
 
-  const imageProUp = async (imageLocation, preset_name, context) => {
+  const imageProUp = async (context, imageLocation, preset_name) => {
     const data = new FormData()
     data.append('file', imageLocation)
     data.append('upload_preset', preset_name)
     await axios.post('https://api.cloudinary.com/v1_1/dukwkk7ti/image/upload', data)
     .then(res => {
+      context(res.data.url);
+      console.log(res.data.url);
       console.log(res);
-      context(res.data.url)
     })
-
     .catch(error=>{
       console.log(error);
-    })
+    });
   }
 
   const go = () => {
-    imageProUp(saImage,'sad-preset', setSadLink);
-    imageProUp(haImage,'happy-preset', setHappyLink);
-    imageProUp(suImage,'suprise-preset', setSuLink);
-    imageProUp(anImage,'anger-preset', setAngerLink);
-    imageProUp(diImage,'disgust-preset', setDiLink);
-    imageProUp(coImage,'contempt-preset', setContemptLink);
-    imageProUp(fImage,'fear-preset', setFearLink);
+    imageProUp(setSadLink, saImage,'sad-preset')
+    .then(
+      console.log(sadLink)
+    )
+    imageProUp(setHappyLink, haImage,'happy-preset');
+    imageProUp(setSuLink, suImage,'suprise-preset');
+    imageProUp(setAngerLink, anImage,'anger-preset');
+    imageProUp(setDiLink, diImage,'disgust-preset');
+    imageProUp(setContemptLink, coImage,'contempt-preset');
+    imageProUp(setFearLink, fImage,'fear-preset');
   }
 
   const upload = async () =>{
+    setDisable(true);
     setIsPending(true);
     go();
-    await axios.post ('https://non-p.herokuapp.com/', pple)
+    axios.post ('https://non-p.herokuapp.com/', pple)
       .then((res)=>{
         setIsPending(false)
         setSurprise(false)
@@ -475,7 +480,7 @@ setSuImage('')
 }}
 className="webcam-btn retake">
 Retake Image</button> 
-<button className="webcam-btn next" onClick={upload}>{isPending ? <p>Uploading</p> : <p>Upload</p>}</button>
+<button className="webcam-btn next" disabled={disable} onClick={upload}>{isPending ? <p>Uploading</p> : <p>Upload</p>}</button>
 </div>:
 <button onClick={(e)=>{
 e.preventDefault();
